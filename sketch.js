@@ -1,27 +1,31 @@
 let a = 0;
-const flowerNumber = 1;
+let w = window.innerWidth;
+let h = window.innerHeight;
+const flowerNumber = 5;
 let colorArray = [];
 let sizeArray = [];
 let cycleArray = [];
 let posArray = []
+// let x;
+// const lowGraph = h * 1.5 / w * x - 300;
+// const highGraph = h * 0.5 / w * x - 300;
 
 function setColorArray() {
-  colorArray.push(random(0, 50));
+  colorArray.push(Math.floor(random(0, 50)));
 }
 function setSize() {
-  sizeArray.push(random(100, 200));
+  sizeArray.push(Math.floor(random(150, 250)));
 }
 function setCycle() {
-  const number1 = random(3,10)
-  const number2 = random(1,3)
-  cycleArray.push({num: number1, den: number1 + number2});
+  const number = Math.floor(random(3,10));
+  cycleArray.push({num: number, den: number + 1});
 }
 function setPos() {
-  posArray.push({x: random(100, windowWidth - 100), y: random(100, windowHeight - 100)});
+  posArray.push({x: Math.floor(random(100, w - 100)), y: Math.floor(random(100, h - 100))});
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(w,h);
   colorMode( HSB, 100 );
   for (let i = 0; i < flowerNumber; i++) {
     setColorArray();
@@ -29,12 +33,13 @@ function setup() {
     setCycle();
     setPos();
   }
+  console.log(posArray);
 }
 
 function draw() {
-  translate(windowWidth/2,windowHeight/2);
+  // translate(windowWidth/2,windowHeight/2);
   noStroke();
-  a += 0.01;
+  a += 0.03;
 
   for (let i = 0; i < flowerNumber; i++) {
     fill(colorArray[i]);
@@ -43,7 +48,7 @@ function draw() {
     let r = sizeArray[i] * rot;
     let x = r * cos(a);
     let y = r * sin(a);
-    ellipse(x, y, 10, 10);
-    // ellipse(posArray[i].x + x, posArray[i].y + y, 10, 10);
+    // ellipse(x, y, 10, 10);
+    ellipse(posArray[i].x + x, posArray[i].y + y, 10, 10);
   }
 }
