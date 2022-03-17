@@ -14,6 +14,8 @@ const rBold = 50;
 let colorArray = [];
 let sizeArray = [];
 let posArray = [];
+// let cycleArray = [];
+
 
 // 花の大きさ
 const rMin = 30;
@@ -21,22 +23,22 @@ const rMax = 100;
 
 // 出現範囲調整用
 function lowGraph(x) {
-  return  (h/w) * x + h/2
+  return  (h / w) * x + h / 2
 }
 function highGraph(x) {
-  return  (h/w) * x - h/2
+  return  (h / w) * x - h / 2
 }
 
 // セットアップ
 function setup() {
   // キャンバスのサイズ
-  // createCanvas(w,h);
   createCanvas(min(w,h) - 100, min(w,h) - 100);
 
   // それぞれの花の初期情報
   for (let i = 0; i < flowerNumber; i++) {
     setColorArray();
     setSize();
+    // setCycle();
   }
   for (let i = 0; i < flowerNumber; i++) {
     setPos();
@@ -47,7 +49,8 @@ function setup() {
 function draw() {
   noStroke();
   // 周期の刻み
-  a += 0.03;
+  a += 0.04;
+  if (a > 72) return;
 
   // 花の描画
   for (let i = 0; i < flowerNumber; i++) {
@@ -58,10 +61,9 @@ function draw() {
     let r = sizeArray[i] * rot;
     let x = r * cos(a);
     let y = r * sin(a);
-    // バリエーション１
+    // ドットのサイズ調整
     const dotSize = Math.floor(6 * r/rBold);
     // const dotSize = Math.floor(4 * sizeArray[i]/rMin);
-    // /バリエーション１
     ellipse(posArray[i].x + x, posArray[i].y + y, dotSize, dotSize);
   }
 
@@ -78,7 +80,7 @@ function setSize() {
   sizeArray.push(Math.floor(random(rMin, rMax)));
 }
 // function setCycle() {
-//   const number = Math.floor(random(3,10));
+//   const number = Math.floor(random(5,8));
 //   cycleArray.push({num: number, den: number + 1});
 // }
 
