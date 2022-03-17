@@ -21,14 +21,6 @@ let posArray = [];
 const rMin = 30;
 const rMax = 100;
 
-// 出現範囲調整用
-function lowGraph(x) {
-  return  (h / w) * x + h / 2
-}
-function highGraph(x) {
-  return  (h / w) * x - h / 2
-}
-
 // セットアップ
 function setup() {
   // キャンバスのサイズ
@@ -79,6 +71,7 @@ function setColorArray() {
 function setSize() {
   sizeArray.push(Math.floor(random(rMin, rMax)));
 }
+
 // function setCycle() {
 //   const number = Math.floor(random(5,8));
 //   cycleArray.push({num: number, den: number + 1});
@@ -123,4 +116,12 @@ function check(x, y, r) {
   });
 
   return ok;
+}
+
+// 出現範囲調整用
+function lowGraph(x) {
+  return  (h / w) * x + h / 2
+}
+function highGraph(x) {
+  return  (h / w) * x - h / 2
 }
