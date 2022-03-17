@@ -119,9 +119,9 @@ function check(x, y, r) {
 }
 
 // 出現範囲調整用
-function lowGraph(x) {
-  return  (h / w) * x + h / 2
-}
-function highGraph(x) {
-  return  (h / w) * x - h / 2
-}
+// function lowGraph(x) {
+//   return  (h / w) * x + h / 2
+// }
+// function highGraph(x) {
+//   return  (h / w) * x - h / 2
+// }
