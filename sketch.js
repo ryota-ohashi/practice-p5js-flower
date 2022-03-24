@@ -53,16 +53,24 @@ function draw() {
     let x = r * cos(a);
     let y = r * sin(a);
 
-    // ドットのサイズ調整
-    const dotSize = 6 * r/rBold;
-
     // 色の透明度
     // const colorAlpha = r/sizeArray[i] * 255;
     // const colorAlpha = max(r/sizeArray[i] * 255, 150);
-    const colorAlpha = 255;
+    let colorAlpha = 255;
 
+    // ドットのサイズ
+    let dotSize = 6 * r/rBold;
+    // if(dotSize < 0.1 && dotSize > -0.1) {
+    //   dotSize = sizeArray[i]/rBold * 5;
+    //   colorAlpha = 0;
+    //   stroke(0);
+    //   strokeWeight(0.3)
+    // }
+
+    // 色
     const circleColor = color(colorArray[i].r, colorArray[i].g, colorArray[i].b, colorAlpha);
     fill(circleColor);
+
     ellipse(posArray[i].x + x, posArray[i].y + y, dotSize, dotSize);
   }
 
@@ -75,7 +83,7 @@ function setColorArray() {
   colorArray.push({r: 0, g: 0, b: 0});
 
   // random
-  // colorArray.push({r: random(255), g: random(255), b: random(255)});
+  // colorArray.push({r: random(205), g: random(205), b: random(205)});
   // colorArray.push({r: random(205), g: random(55), b: random(55)});
 }
 
