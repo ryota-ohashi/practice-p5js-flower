@@ -6,7 +6,7 @@ let w = window.innerWidth;
 let h = window.innerHeight;
 
 // 定数
-const flowerNumber = 15;
+const flowerNumber = 13;
 const cycle = 6/7;
 const rBold = 50;
 
@@ -46,16 +46,23 @@ function draw() {
 
   // 花の描画
   for (let i = 0; i < flowerNumber; i++) {
-    fill(colorArray[i]);
     let rot = cos(cycle * a);
     // let rot = cos(cycleArray[i].num / cycleArray[i].den * a);
     if(rot < -0.63 || rot > 0.63) return;
     let r = sizeArray[i] * rot;
     let x = r * cos(a);
     let y = r * sin(a);
+
     // ドットのサイズ調整
-    const dotSize = Math.floor(6 * r/rBold);
-    // const dotSize = Math.floor(4 * sizeArray[i]/rMin);
+    const dotSize = 6 * r/rBold;
+
+    // 色の透明度
+    // const colorAlpha = r/sizeArray[i] * 255;
+    // const colorAlpha = max(r/sizeArray[i] * 255, 150);
+    const colorAlpha = 255;
+
+    const circleColor = color(colorArray[i].r, colorArray[i].g, colorArray[i].b, colorAlpha);
+    fill(circleColor);
     ellipse(posArray[i].x + x, posArray[i].y + y, dotSize, dotSize);
   }
 
@@ -63,8 +70,13 @@ function draw() {
 
 // 色をセット
 function setColorArray() {
-  // colorArray.push(Math.floor(random(0, 20)));
-  colorArray.push(0);
+
+  // black
+  colorArray.push({r: 0, g: 0, b: 0});
+
+  // random
+  // colorArray.push({r: random(255), g: random(255), b: random(255)});
+  // colorArray.push({r: random(205), g: random(55), b: random(55)});
 }
 
 // 花のサイズをセット
