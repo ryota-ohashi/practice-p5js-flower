@@ -14,6 +14,5 @@ canvas{
   top: 50%;
   transform: translate(-50%, -50%);
   border: 5px solid #000;
-  /* border: 5px solid #e2d06e; */
   box-sizing: border-box;
 }
